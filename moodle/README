@@ -1,5 +1,6 @@
 Adding moodle Dockerfile with moodle user
 Added new user moodle for running crons.
+version 4.3.2-debian-11-r1
 
 Difference from actual Dockerfile
 
