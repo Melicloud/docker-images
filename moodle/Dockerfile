@@ -46,6 +46,7 @@ RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
     done
 RUN apt-get autoremove --purge -y curl && \
     apt-get update && apt-get upgrade -y && \
+    apt-get install nano &&\
     apt-get clean && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 RUN localedef -c -f UTF-8 -i en_US en_US.UTF-8
 RUN sed -i -e '/pam_loginuid.so/ s/^#*/#/' /etc/pam.d/cron
@@ -61,6 +62,11 @@ RUN /opt/bitnami/scripts/php/postunpack.sh
 RUN /opt/bitnami/scripts/apache-modphp/postunpack.sh
 RUN /opt/bitnami/scripts/moodle/postunpack.sh
 RUN /opt/bitnami/scripts/mysql-client/postunpack.sh
+
+RUN groupadd -g 4200 kubernetes
+RUN useradd moodle -u 4201 -g 4200 -m -s /bin/bash
+RUN echo "moodle" >> etc/cron.d/cron.allow
+RUN chown -R moodle:kubernetes /opt/bitnami/ /var/spool/cron/
 ENV APACHE_HTTPS_PORT_NUMBER="" \
     APACHE_HTTP_PORT_NUMBER="" \
     APP_VERSION="4.3.2" \
@@ -68,7 +74,6 @@ ENV APACHE_HTTPS_PORT_NUMBER="" \
     LANG="en_US.UTF-8" \
     LANGUAGE="en_US:en" \
     PATH="/opt/bitnami/php/bin:/opt/bitnami/php/sbin:/opt/bitnami/apache/bin:/opt/bitnami/postgresql/bin:/opt/bitnami/mysql/bin:/opt/bitnami/common/bin:$PATH"
-USER 1001
 EXPOSE 8080 8443
 
 ENTRYPOINT [ "/opt/bitnami/scripts/moodle/entrypoint.sh" ]
