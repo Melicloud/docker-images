@@ -16,7 +16,3 @@ export _tag=15.5-bookworm
 docker build -t public.ecr.aws/d9k2s2v9/postsgreql-aws-openvpn:$_tag .
 docker push public.ecr.aws/d9k2s2v9/postsgreql-aws-openvpn:$_tag
 ```
-
-## CICD
-
-The deployment for this image builds only on push of a tag formatted as `postgresclient-aws-openvpn*` to the repo. Please use the postgres and the debian/ubuntu version in the tag, e.g postgresclient-aws-15-5-bookworm, for the image to be tagged as public.ecr.aws/d9k2s2v9/postsgreql-aws-openvpn:15-5-bookworm.
