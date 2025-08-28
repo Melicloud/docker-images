@@ -12,7 +12,7 @@ We use either debian or ubuntu, depending on which of the two has postgresql-cli
 
 ##  Usage
 ```bash
-export _tag=15.5-bookworm
+export _tag=v1
 docker build -t public.ecr.aws/d9k2s2v9/postsgreql-aws-openvpn:$_tag .
 docker push public.ecr.aws/d9k2s2v9/postsgreql-aws-openvpn:$_tag
 ```
