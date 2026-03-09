@@ -2,6 +2,7 @@
 
 This is a debian/ubuntu based image that contains:
 * postgres client
+* mysql client
 * awscli
 * openvpn
 
@@ -13,6 +14,6 @@ We use either debian or ubuntu, depending on which of the two has postgresql-cli
 ##  Usage
 ```bash
 export _tag=v1
-docker build -t public.ecr.aws/d9k2s2v9/postsgreql-aws-openvpn:$_tag .
-docker push public.ecr.aws/d9k2s2v9/postsgreql-aws-openvpn:$_tag
+docker build -t public.ecr.aws/d9k2s2v9/dbbackups-aws-openvpn:$_tag .
+docker push public.ecr.aws/d9k2s2v9/dbbackups-aws-openvpn:$_tag
 ```
