@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - 'mongodbtools-aws-*' # e.g mongodbtools-aws-100-20-1-trixie
+      - "mongodbtools-aws-*" # e.g mongodbtools-aws-100-20-1-trixie
 
 env:
   IMAGE_NAME: mongodbtools-aws
