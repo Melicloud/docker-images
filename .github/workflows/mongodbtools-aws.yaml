@@ -9,7 +9,6 @@
 name: Publish mongodbtools-aws
 
 on:
-  workflow_dispatch:
   push:
     tags:
       - "mongodbtools-aws-*" # e.g mongodbtools-aws-100-20-1-trixie
